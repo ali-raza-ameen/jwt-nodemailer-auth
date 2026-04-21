@@ -9,6 +9,7 @@ const otpVerify = require("../controller/otpVerify.js");
 const changePassword = require("../controller/changePassword.js");
 const { userValidator, userSchema } = require("../validator/foamValidation.js");
 const verifyEmail = require("../controller/emailVerification.js");
+const { getAllUsers } = require("../controller/allUserController.js");
 
 
 const router = express.Router();
@@ -43,9 +44,8 @@ router.post("/verify-otp/:email", otpVerify);
 }
 router.post("/change-password/:email", changePassword);
 
-/*//////////////////
-Product route
-//////////////////*/
-{/*Add Product */}
+{/* get all users */}
+router.get("/users", isAuth, getAllUsers);
+
 
 module.exports = router;
